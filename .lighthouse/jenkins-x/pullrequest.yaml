@@ -30,7 +30,7 @@ spec:
           resources: {}
           script: |
             #!/bin/sh
-            make linux
+            make -j go.build PLATFORM=linux_amd64
         - image: gcr.io/kaniko-project/executor:debug-v1.3.0
           name: build-container-build
           resources: {}
@@ -39,13 +39,7 @@ spec:
             source .jx/variables.sh
             cp /tekton/creds-secrets/tekton-container-registry-auth/.dockerconfigjson /kaniko/.docker/config.json
             /kaniko/executor $KANIKO_FLAGS --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
-        - image: gcr.io/jenkinsxio/jx-preview:0.0.136
-          name: promote-jx-preview
-          resources: {}
-          script: |
-            #!/usr/bin/env sh
-            source /workspace/source/.jx/variables.sh
-            jx preview create
+
 
   podTemplate: {}
   serviceAccountName: tekton-bot
