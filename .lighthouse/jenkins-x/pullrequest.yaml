@@ -31,18 +31,18 @@ spec:
           script: |
             #!/bin/sh
             make -j submodules
-        - image: gcr.io/jenkinsxio/builder-go:2.1.150-769
-          name: build-make-linux
-          resources: {}
-          script: |
-            #!/bin/sh
-            make -j go.build PLATFORM=linux_amd64
+#        - image: gcr.io/jenkinsxio/builder-go:2.1.150-769
+#          name: build-make-linux
+#          resources: {}
+#          script: |
+#            #!/bin/sh
+#            make -j go.build PLATFORM=linux_amd64
         - image: gcr.io/jenkinsxio/builder-go:2.1.150-769
           name: build-make-list
           resources: {}
           script: |
             #!/bin/sh
-            ls -al /workspace/source
+            ls -al /home
         - image: gcr.io/kaniko-project/executor:debug-v1.3.0
           name: build-container-build
           resources: {}
