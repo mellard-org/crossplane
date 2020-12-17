@@ -38,7 +38,7 @@ spec:
             #!/bin/sh
             make -j go.build PLATFORM=linux_amd64
         - image: gcr.io/jenkinsxio/builder-go:2.1.150-769
-          name: build-make-linux
+          name: build-make-list
           resources: {}
           script: |
             #!/bin/sh
