@@ -53,6 +53,7 @@ spec:
             /kaniko/executor $KANIKO_FLAGS --context=/workspace/source/_output --dockerfile=/workspace/source/Dockerfile --destination=$DOCKER_REGISTRY/$DOCKER_REGISTRY_ORG/$APP_NAME:$VERSION
 
 
+
   podTemplate: {}
   serviceAccountName: tekton-bot
   timeout: 240h0m0s
